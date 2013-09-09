@@ -53,7 +53,7 @@ module Mongoid::Acts::NestedSet
 
         attr_accessor :skip_before_destroy
 
-        if accessible_attributes.blank?
+        if respond_to?(:accessible_attributes) && accessible_attributes.blank?
           attr_protected left_field_name.intern, right_field_name.intern
         end
 
